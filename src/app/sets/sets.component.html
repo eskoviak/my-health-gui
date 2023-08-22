@@ -1,0 +1,43 @@
+<button (click)="onNewSet()">New Set</button>
+<form [formGroup]='setsForm' (ngSubmit)="onSubmit()">
+    <div *ngIf="edit_flag">
+        <label for="id">Id: </label>
+        <input id="id" type="text" formControlName="id" readonly>
+</div>
+    <div>
+        <label for="date">Date: </label>
+        <input id="date" type="text" formControlName="date">
+    </div>
+    <div>
+        <label for="exercise">Exercise: </label>
+        <select id="execise" formControlName="exercise">
+            <option *ngFor="let exercise of exercises; index as i;
+                trackby: exerciseTrackBy" label={{exercises[i].exercise_name}}>
+                {{ exercises[i].exercise_id }}</option>
+        </select>
+    </div>
+    <div>
+        <label for="cadence">Cadence:</label>
+        <input id="cadence" formControlName="'cadence">
+    </div>
+    <div>
+        <label for="weights">Weights:</label>
+        <input id="weights" formControlName="weights">
+    </div>
+    <div>
+        <label for="notes">Notes:</label>
+        <input id="notes" formControlName="notes">
+    </div>
+
+    <div *ngIf="edit_flag">
+        <p>Update form and press Update or New for new record</p>
+        <button (click)="onUpdate()"[disabled]="false">Update</button>
+    </div>
+    <div *ngIf="!edit_flag">
+            <p>Complete the form and submit</p>
+            <button type="submit" [disabled]="false">Submit</button>
+    </div>
+
+</form>
+
+<p>The value of id is : {{ id }}</p>
