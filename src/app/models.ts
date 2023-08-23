@@ -1,5 +1,6 @@
 export interface Exercise {
-    exercise_id : number,
-    exercise_name : string,
-    exercise_description : string,
+    id : number,
+    exrx_name : string,
+    name : string,
+    description : string,
 }
